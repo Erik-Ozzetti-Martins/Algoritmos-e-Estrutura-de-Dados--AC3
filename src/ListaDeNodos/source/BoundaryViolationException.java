@@ -1,4 +1,4 @@
-package source;
+package ListaDeNodos.source;
 
 public class BoundaryViolationException extends RuntimeException{
 

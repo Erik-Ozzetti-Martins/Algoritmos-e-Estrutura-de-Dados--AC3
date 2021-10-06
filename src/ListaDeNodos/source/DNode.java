@@ -1,4 +1,4 @@
-package source;
+package ListaDeNodos.source;
 
 public class DNode <E> implements Position<E> {
 
@@ -16,7 +16,7 @@ public class DNode <E> implements Position<E> {
     public E element() {
 
         if ((prev == null) && (next == null)) {
-            throw new InvalidPositionException("Postion not in list!");
+            throw new InvalidPositionException("Position not in list!");
         }
 
         return element;

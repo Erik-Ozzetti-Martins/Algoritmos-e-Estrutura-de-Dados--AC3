@@ -1,8 +1,8 @@
-package source;
+package ListaDeNodos.source;
 
 import java.util.Iterator;
 
-public class NodePositionList <E> implements PositionList<E> {
+public class NodePositionList<E> implements PositionList<E> {
     protected int numElts;
     protected DNode<E> header, trailer;
 
@@ -105,22 +105,6 @@ public class NodePositionList <E> implements PositionList<E> {
 
     public void addAfter(Position<E> p, E e) throws InvalidPositionException {
         DNode<E> v = checkPosition(p);
-
-        boolean isInside = false;
-        while (header.getNext() != null) {
-            if (this.header == p) {
-                isInside = true;
-                break;
-            }
-            header = header.getNext();
-        }
-
-        if (!isInside) {
-            throw new InvalidPositionException("Value is not part of the list!");
-        }
-
-
-
         numElts++;
         DNode<E> newNode = new DNode<E>(v, v.getNext(), e);
         v.getNext().setPrev(newNode);
@@ -154,6 +138,22 @@ public class NodePositionList <E> implements PositionList<E> {
         v.setPrev(null);
 
 
+    }
+
+    public void invertNodeList(){
+        Position<E> v = first();
+        Position<E> x = last();
+        Position<E> tmp;
+        for (int i = 0; i < (size()/2); i++) {
+            addBefore(v,x.element());
+            addAfter(x,v.element());
+            tmp = checkPosition(v).getNext();
+            remove(v);
+            v = tmp;
+            tmp = checkPosition(x).getPrev();
+            remove(x);
+            x = tmp;
+        }
     }
 
 

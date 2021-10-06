@@ -1,4 +1,4 @@
-package source;
+package ListaDeNodos.source;
 
 public class EmptyListException extends RuntimeException{
     public EmptyListException (String err) {

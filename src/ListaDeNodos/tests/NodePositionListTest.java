@@ -1,11 +1,11 @@
-package tests;
+package ListaDeNodos.tests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
-import source.NodePositionList;
-import source.Position;
+import ListaDeNodos.source.NodePositionList;
+import ListaDeNodos.source.Position;
 
 public class NodePositionListTest {
     @Test
@@ -45,6 +45,13 @@ public class NodePositionListTest {
 
         l.addAfter(l.first(), 2);
         assertEquals("[8, 2, 7, 5]", l.toString(), "[8, 2, 7, 5]");
+
+        l.invertNodeList();
+        assertEquals("[5, 7, 2, 8]", l.toString(), "[5, 7, 2, 8]");
+
+        l.addAfter(l.first(),5);
+        l.invertNodeList();
+        assertEquals("[8, 2, 7, 5, 5]", l.toString(), "[8, 2, 7, 5, 5]");
     }
 
 
@@ -67,10 +74,6 @@ public class NodePositionListTest {
 
         //assertEquals("[9, 8, 3, 5]", l.toString(), "[3, 9, 8, 5");
 
-
-
-
-
     }
 
 
@@ -91,13 +94,6 @@ public class NodePositionListTest {
 
         s.addFirst(2);
         s.addLast(3);
-
-
-
-
-
-
-
     }
 
 }

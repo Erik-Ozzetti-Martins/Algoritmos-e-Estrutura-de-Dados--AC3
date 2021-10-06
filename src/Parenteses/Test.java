@@ -6,16 +6,20 @@ import static org.junit.jupiter.api.Assertions.*;
 class TestParentese {
     @Test
     void Test (){
-       String expressao = "{()}";
-//       String expressao = "{{[()]}}";
-//       String expressao = "{}";
-//       String expressao = "{(){}";
-//        String expressao = "{(})}";
-//        String expressao = "{1+(2*3)}";
-          //String expressao = "{([)}";
+        String expressao = "{()}";
         Parenteses entrada = new Parenteses(expressao);
         assertEquals(true, entrada.validarFormacao());
-
-
+        expressao = "{{[()]}}";
+        entrada = new Parenteses(expressao);
+        assertEquals(true, entrada.validarFormacao());
+        expressao = "{(){}";
+        entrada = new Parenteses(expressao);
+        assertEquals(false, entrada.validarFormacao());
+        expressao = "{[{(])}}";
+        entrada = new Parenteses(expressao);
+        assertEquals(false, entrada.validarFormacao());
+        expressao = "{1+(2*3)}";
+        entrada = new Parenteses(expressao);
+        assertEquals(true, entrada.validarFormacao());
     }
 }
